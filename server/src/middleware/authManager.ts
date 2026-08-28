@@ -1,9 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
+import { sendError } from '../utils/response';
+import { AppError } from '../utils/AppError';
 
 let faostatToken: string | null = null;
 let tokenExpiresAt = 0;
 
 const logIn = async (): Promise<string> => {
+
+
     const body = new URLSearchParams({
         username: process.env.FAOSTAT_USER ?? "",
         password: process.env.FAOSTAT_PASSWORD ?? "",
@@ -17,7 +21,7 @@ const logIn = async (): Promise<string> => {
 
     if (!response.ok) {
         const errorBody = await response.text();
-        throw new Error(`FAOSTAT login failed: ${response.status} ${errorBody}`);
+        throw new AppError(response.status, `FAOSTAT login failed: ${errorBody}`);
     }
 
     const data = await response.json();
@@ -41,7 +45,11 @@ export const tokenStatus = async (req: Request, res: Response, next: NextFunctio
         res.locals.faostatToken = faostatToken;
         next();
     } catch (error) {
+        if (error instanceof AppError) {
+            sendError(res, error.statusCode, error.message);
+            return;
+        }
         const message = error instanceof Error ? error.message : "Authentication failed";
-        res.status(502).json({ error: message });
+        sendError(res, 502, message);
     }
 };
