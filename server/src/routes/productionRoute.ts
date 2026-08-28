@@ -1,9 +1,9 @@
 import express from "express";
-import {countryProduction, logIn} from "../controllers/productionController";
+import {countryProduction} from "../controllers/productionController";
+import { tokenStatus } from "../middleware/authManager";
 
 const productionRoute = express.Router();
 
-productionRoute.post("/login", logIn);
-productionRoute.get("/:country", countryProduction);
+productionRoute.get("/:country", tokenStatus, countryProduction);
 
 export default productionRoute;
