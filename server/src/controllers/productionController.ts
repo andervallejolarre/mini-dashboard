@@ -28,7 +28,8 @@ export const countryProduction = async (req: Request, res: Response): Promise<vo
         );
 
         if (!response.ok) {
-            sendError(res, response.status, `FAOSTAT API ERROR`);
+            const errorBody = await response.text();
+            sendError(res, response.status, `FAOSTAT API ERROR: ${errorBody}`);
             return;
         }
 
