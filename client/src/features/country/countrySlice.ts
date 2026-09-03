@@ -1,17 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 export interface Country {
-    year: number
-    value: number
+    country: string
 }
 
-const initialState: Country[] = [
-  { year: 2025, value: 238},
-  { year: 2024, value: 241}
-]
+const initialState: Country = { country: 'ecuador'}
 
 const countrySlice = createSlice({
-  name: 'production',
+  name: 'country',
   initialState,
   reducers: {}
 })
