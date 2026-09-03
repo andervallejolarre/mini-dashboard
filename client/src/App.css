@@ -19,4 +19,11 @@
   .chart {
     text-transform: uppercase;
   }
+
+  .years-prod{
+    width: 50%;
+    justify-self: center;
+    display: flex;
+    justify-content: space-between;
+  }
 }

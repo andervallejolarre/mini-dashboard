@@ -1,16 +1,16 @@
-import { useAppSelector } from '../../hooks/index'
+import { useEffect } from 'react'
+import { useAppDispatch, useAppSelector } from '../../hooks/index'
+import { fetchProduction } from '../production/productionSlice'
 import type { Country } from './countrySlice';
 
 const CountryProd = () => {
+    const dispatch = useAppDispatch()
     // Select the `state.posts` value from the store into the component
     const selected: Country = useAppSelector(state => state.country);
 
-    /*const renderedProduction = prod.map(post => (
-        <li className="years-prod" key={Math.floor(Math.random() * 100)}>
-            <p>{post.year}</p>
-            <p>{post.value}</p>
-        </li>
-    ))*/
+    useEffect(() => {
+    dispatch(fetchProduction())
+  }, [selected.country, dispatch])
 
     return (
         <section className="chart">
