@@ -14,7 +14,7 @@ const CountryProd = () => {
 
     return (
         <section className="chart">
-            <h2>{selected.country}'s production </h2>
+            <h2>{selected.country}'s coffee production </h2>
         </section>
     )
 }

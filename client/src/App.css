@@ -1,8 +1,14 @@
 .mainPanel {
   height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 3fr 1fr;
   align-content: center;
+
+  .countrySelection{
+    align-content: left;
+    text-align: left;
+    padding-left: 2em;
+  }
 
   ul {
     padding-left: 0;
@@ -10,14 +16,15 @@
     li {
       width: 100%;
       display: flex;
-      gap: 20%;
       list-style: none;
-      justify-content: center;
+      margin-bottom: 2em;
+      text-transform: uppercase;
     }
   }
 
   .chart {
     text-transform: uppercase;
+    padding:1em;
   }
 
   .years-prod{
