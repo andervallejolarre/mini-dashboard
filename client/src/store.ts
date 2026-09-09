@@ -4,6 +4,7 @@ import productionReducer from './features/production/productionSlice'
 
 export const store = configureStore({
   reducer: {
+    //we have two reducers available
     country: countryReducer,
     production: productionReducer
   }

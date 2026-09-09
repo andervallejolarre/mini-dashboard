@@ -11,10 +11,13 @@ import { store } from './store.ts'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+    {/*We need Provider so the store with ur states, reducers, and selectors 
+    are available in the whole app*/}
     <Provider store={store}>
+      {/*Mantine also needs a Provider envelope*/}
       <MantineProvider>
-    <App />
-    </MantineProvider>
+        <App />
+      </MantineProvider>
     </Provider>
   </StrictMode>,
 )

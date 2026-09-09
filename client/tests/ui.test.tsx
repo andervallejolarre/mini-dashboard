@@ -9,13 +9,19 @@ import { countrySelected } from '../src/features/country/countrySlice'
 import productionReducer, { fetchProduction } from '../src/features/production/productionSlice'
 import { store } from '../src/store'
 
+//Unit tests
+
+//To avoid any cache contamination
 afterEach(() => {
     cleanup()
 })
 
+//vitest components, run the tests
 describe('country data interaction', () => {
     test('renders all available countries', () => {
+        //react testing library, renders our app
         render(
+            //We need this to emulate our App without calling the whole app
             <Provider store={store}>
                 <CountrySelect />
             </Provider>
@@ -27,6 +33,7 @@ describe('country data interaction', () => {
     })
 
     test('changes the selected country when a country is clicked', async () => {
+        //user-event from testing library let us perform clicks
         const user = userEvent.setup()
         store.dispatch(countrySelected({ country: 'ecuador' }))
 
@@ -50,6 +57,7 @@ describe('country data interaction', () => {
     })
 
     test('displays the selected country', () => {
+        //Here vi.spyOn does the same as jest.spyOn in server tests
         const getProduction = vi.spyOn(axios, 'get').mockResolvedValue({ data: [] })
         store.dispatch(countrySelected({ country: 'colombia' }))
 
@@ -77,6 +85,7 @@ describe('country data interaction', () => {
         getProduction.mockRestore()
     })
 
+    //testing thunks
     test('sets production status to pending while requesting data', () => {
         const pendingAction = fetchProduction.pending('request-id', undefined)
 

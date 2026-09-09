@@ -5,15 +5,17 @@ import type { Country } from './countrySlice';
 
 const CountryProd = () => {
     const dispatch = useAppDispatch()
-    // Select the `state.posts` value from the store into the component
+    // We use the selector hook to get `state.country`
     const selected: Country = useAppSelector(state => state.country);
 
     useEffect(() => {
-    dispatch(fetchProduction())
-  }, [selected.country, dispatch])
+        //Event Listenner. WHen ever country state changes fetchProduction is triggered
+        dispatch(fetchProduction())
+    }, [selected.country, dispatch])
 
     return (
         <section className="chart">
+            {/*Displaying sountry State*/}
             <h2>{selected.country}'s coffee production </h2>
         </section>
     )

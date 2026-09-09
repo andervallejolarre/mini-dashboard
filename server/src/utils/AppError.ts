@@ -1,4 +1,4 @@
-// Error that carries the HTTP status it should be reported with
+// Error that carries the HTTP status
 export class AppError extends Error {
     statusCode: number;
 

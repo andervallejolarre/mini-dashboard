@@ -10,7 +10,6 @@ afterEach(() => {
 //Success Scenarios
 describe('GET /api/production/:country', () => {
 
-  //Fetching country's production success
   it('logs In and continues to the country production controller', async () => {
     const app = await getFreshApp();
     const fetchMock = jest.spyOn(global, "fetch");
@@ -28,7 +27,6 @@ describe('GET /api/production/:country', () => {
     ]);
   });
 
-  //response structure always two key/value 
   it('response filters any number of key/values getting back only year and value', async () => {
     const app = await getFreshApp();
     const fetchMock = jest.spyOn(global, "fetch");
@@ -44,7 +42,6 @@ describe('GET /api/production/:country', () => {
     ]);
   });
 
-  //Empty FAOSTAT data [] -> 200
   it('succesfull request even if FAOSTAT responds with an empty array', async () => {
     const app = await getFreshApp();
     const fetchMock = jest.spyOn(global, "fetch");
@@ -63,7 +60,6 @@ describe('GET /api/production/:country', () => {
 //Errors
 describe('GET /api/production/:country', () => {
 
-  //Unsupported country returns 400
   it('not that country in our system', async () => {
     const app = await getFreshApp();
     const fetchMock = jest.spyOn(global, "fetch").mockResolvedValueOnce(successfulLogin());
@@ -99,7 +95,6 @@ describe('GET /api/production/:country', () => {
     });
   });
 
-  //Network error return 500 with "something went wrong"
   it('massive server system failure', async () => {
     const app = await getFreshApp();
     const fetchMock = jest.spyOn(global, "fetch");

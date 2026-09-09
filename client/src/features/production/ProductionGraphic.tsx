@@ -3,11 +3,12 @@ import type { ProductionState } from './productionSlice';
 import Graph from '../../components/Graph'
 
 const ProductionGraphic = () => {
-    // Select the `state.posts` value from the store into the component
+    // We use the selector hook to get state.production
     const fetch: ProductionState = useAppSelector(state => state.production);
 
     return (
         <section className="chart">
+            {/* We ar passing whats inside state.production */}
             <Graph {...fetch}/>
         </section>
     )
