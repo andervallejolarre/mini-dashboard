@@ -66,3 +66,6 @@ jobs:
       - name: Run e2e tests
         working-directory: e2e
         run: npm test
+        env:
+          FAOSTAT_USER: ${{ secrets.FAOSTAT_USER }}
+          FAOSTAT_PASSWORD: ${{ secrets.FAOSTAT_PASSWORD }}
