@@ -23,7 +23,7 @@ export const countryProduction = async (req: Request, res: Response): Promise<vo
 
         const faostatToken = res.locals.faostatToken as string;
 
-        const response = await fetch(`https://faostatservices.fao.org/api/v1/en/data/QCL?area=${country}&element=2510&item=656&year=2025%2C2024%2C2023%2C2022%2C2021%2C2020%2C2019%2C2018%2C2017%2C2016%2C2015`,
+        const response = await fetch(`https://faostatservices.fao.org/api/v1/en/data/QCL?area=${country}&element=2510&item=656&year=2025%2C2024%2C2023%2C2022%2C2021%2C2020%2C2019%2C2018%2C2017%2C2016%2C2015%2C2014%2C2013%2C2012%2C2011%2C2010%2C2009%2C2008%2C2007%2C2006%2C2005%2C2004%2C2003%2C2002%2C2001%2C2000%2C1999%2C1999%2C1998%2C1997%2C1996%2C1995%2C1994%2C1993%2C1992%2C1991%2C1990%2C1989%2C1988%2C1987%2C1986%2C1985%2C1984%2C1983%2C1982%2C1981%2C1980`,
             { headers: { Authorization: `Bearer ${faostatToken}` } }
         );
 
